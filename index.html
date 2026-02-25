@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinhal Pratas</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto;
+    background:#f5f5f7;
+}
+.top-strip{
+    background:#fff;
+    text-align:center;
+    padding:8px;
+    font-size:13px;
+    border-bottom:1px solid #eee;
+}
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px;
+    background:#fff;
+}
+.logo{
+    font-size:22px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+.search{
+    padding:0 15px 10px;
+    background:#fff;
+}
+.search input{
+    width:100%;
+    padding:12px;
+    border-radius:12px;
+    border:1px solid #ddd;
+    font-size:14px;
+}
+.navbar{
+    display:flex;
+    overflow-x:auto;
+    gap:18px;
+    padding:12px 15px;
+    background:#fff;
+    border-bottom:1px solid #eee;
+    align-items:center;
+}
+.navbar::-webkit-scrollbar{display:none;}
+.navbar button{
+    background:none;
+    border:none;
+    font-size:14px;
+    white-space:nowrap;
+    cursor:pointer;
+}
+.navbar select{
+    padding:6px 10px;
+    border-radius:10px;
+    border:1px solid #ddd;
+}
+.container{
+    padding:20px 15px 100px;
+    display:grid;
+    gap:18px;
+}
+.card{
+    background:#fff;
+    padding:15px;
+    border-radius:18px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.05);
+}
+.card img{
+    width:100%;
+    border-radius:14px;
+    margin-bottom:10px;
+}
+.card h3{
+    font-size:16px;
+    margin-bottom:6px;
+}
+.price{
+    font-weight:bold;
+    margin-bottom:10px;
+}
+.add-btn{
+    width:100%;
+    padding:12px;
+    background:#000;
+    color:#fff;
+    border:none;
+    border-radius:12px;
+    font-weight:600;
+    cursor:pointer;
+}
+.cart-fixed{
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#25D366;
+    color:#fff;
+    padding:14px 28px;
+    border-radius:50px;
+    font-weight:bold;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    cursor:pointer;
+}
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.4);
+    backdrop-filter:blur(5px);
+    justify-content:center;
+    align-items:flex-end;
+}
+.modal-content{
+    background:#fff;
+    width:100%;
+    max-width:500px;
+    padding:20px;
+    border-radius:25px 25px 0 0;
+}
+.item-carrinho{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0;
+    border-bottom:1px solid #eee;
+    font-size:14px;
+}
+.item-carrinho button{
+    background:none;
+    border:none;
+    color:#c0392b;
+    cursor:pointer;
+}
+.total{
+    font-weight:bold;
+    margin:15px 0;
+}
+.modal-content input,
+.modal-content textarea{
+    width:100%;
+    padding:12px;
+    border-radius:12px;
+    border:1px solid #ddd;
+    margin-bottom:10px;
+}
+.btn-green{
+    width:100%;
+    padding:14px;
+    border-radius:14px;
+    border:none;
+    background:#25D366;
+    color:#fff;
+    font-weight:bold;
+    cursor:pointer;
+}
+.btn-gray{
+    width:100%;
+    padding:12px;
+    border-radius:12px;
+    border:none;
+    background:#eee;
+    margin-top:8px;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-strip">
+PRATA 925 AUTÊNTICA ✨ | ENVIO PARA TODO BRASIL
+</div>
+
+<header style="flex-direction:column;align-items:center;text-align:center;">
+<div class="logo">VINHAL PRATAS</div>
+
+<div style="font-size:13px;color:#666;margin-top:4px;">
+📞 (62) 99473-6469 | 📞 (62) 92000-8312 <br>
+✉️ vinhalpratass925@gmail.com
+</div>
+
+</header>
+
+<div class="search">
+<input type="text" placeholder="Buscar produto..." onkeyup="pesquisarProduto()">
+</div>
+
+<div class="navbar">
+<button onclick="filtrarCategoria('todos')">Todos</button>
+<button onclick="filtrarCategoria('argola')">Argolas</button>
+<button onclick="filtrarCategoria('berloques')">Berloques</button>
+</div>
+
+<div style="background:#fff;padding:15px;text-align:center;border-bottom:1px solid #eee;">
+<select onchange="ordenarProdutos(this.value)" 
+style="padding:10px 18px;border-radius:12px;border:1px solid #ddd;font-size:14px;">
+    <option value="">Ordenar por</option>
+    <option value="menor">Menor preço</option>
+    <option value="maior">Maior preço</option>
+    <option value="az">Nome A–Z</option>
+    <option value="za">Nome Z–A</option>
+</select>
+</div>
+
+<div class="container">
+
+<div class="card" data-categoria="argola">
+<img src="a.png">
+<h3>Argola Redonda P</h3>
+<p class="status pronta">Pronta Entrega</p>
+<p class="price">R$ 14,90</p>
+<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
+</div>
+
+<div class="card" data-categoria="berloques">
+<img src="bmaca.webp">
+<h3>Berloque Maçã</h3>
+<p class="price">R$ 69,90</p>
+<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
+</div>
+
+<div class="card" data-categoria="argola">
+<img src="a.png">
+<h3>Argola Redonda M</h3>
+<p class="status pronta">Sob Encomenda</p>
+<p class="price">R$ 19,90</p>
+<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
+</div>
+
+<div class="card" data-categoria="argola">
+<img src="a.png">
+<h3>Argola Redonda G</h3>
+<p class="price">R$ 25,90</p>
+<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
+</div>
+
+<div class="card" data-categoria="argola">
+<img src="a.png">
+<h3>Kit Argolas Redonda P M G</h3>
+<p class="price">R$ 44,90</p>
+<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
+</div>
+
+<div class="card" data-categoria="berloques">
+<img src="bsao.webp">
+<h3>Berloque Time São Paulo</h3>
+<p class="price">R$ 59,90</p>
+<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
+</div>
+
+</div>
+
+<div class="cart-fixed" onclick="abrirCarrinho()">
+Carrinho (<span id="qtd">0</span>)
+</div>
+
+<div class="modal" id="modalCarrinho">
+<div class="modal-content">
+<h3>Seu Pedido</h3>
+<div id="listaCarrinho"></div>
+<div class="total">
+Total: R$ <span id="valorTotal">0.00</span>
+</div>
+<input type="text" id="nomeCliente" placeholder="Seu nome">
+<textarea id="obsPedido" placeholder="Observações"></textarea>
+<button class="btn-green" onclick="enviarPedido()">Enviar pelo WhatsApp</button>
+<button class="btn-gray" onclick="fecharCarrinho()">Fechar</button>
+</div>
+</div>
+
+<script>
+let carrinho = [];
+let total = 0;
+
+function addCarrinho(botao){
+    let card = botao.closest(".card");
+    let nome = card.querySelector("h3").innerText;
+    let precoTexto = card.querySelector(".price").innerText;
+    let preco = parseFloat(precoTexto.replace("R$","").replace(",",".").trim());
+    carrinho.push({nome, preco});
+    total += preco;
+    document.getElementById("qtd").innerText = carrinho.length;
+}
+
+function abrirCarrinho(){
+    if(carrinho.length === 0){
+        alert("Seu carrinho está vazio!");
+        return;
+    }
+    let lista = document.getElementById("listaCarrinho");
+    lista.innerHTML = "";
+    carrinho.forEach((item,index)=>{
+        lista.innerHTML += `
+        <div class="item-carrinho">
+            <span>${item.nome}</span>
+            <span>
+                R$ ${item.preco.toFixed(2)}
+                <button onclick="removerItem(${index})">✖</button>
+            </span>
+        </div>`;
+    });
+    document.getElementById("valorTotal").innerText = total.toFixed(2);
+    document.getElementById("modalCarrinho").style.display = "flex";
+}
+
+function fecharCarrinho(){
+    document.getElementById("modalCarrinho").style.display = "none";
+}
+
+function removerItem(index){
+    total -= carrinho[index].preco;
+    carrinho.splice(index,1);
+    document.getElementById("qtd").innerText = carrinho.length;
+    abrirCarrinho();
+}
+
+function enviarPedido(){
+    let nome = document.getElementById("nomeCliente").value.trim();
+    if(nome === ""){
+        alert("Informe seu nome!");
+        return;
+    }
+    let mensagem = `🛍️ PEDIDO - VINHAL PRATAS\n\n`;
+    mensagem += `👤 Nome: ${nome}\n\n`;
+    carrinho.forEach(item=>{
+        mensagem += `• ${item.nome} - R$ ${item.preco.toFixed(2)}\n`;
+    });
+    mensagem += `\n💰 Total: R$ ${total.toFixed(2)}\n`;
+    let url = "https://wa.me/5562994736469?text=" + encodeURIComponent(mensagem);
+    window.open(url, "_blank");
+}
+
+function filtrarCategoria(cat){
+    let cards=document.querySelectorAll('.card');
+    cards.forEach(card=>{
+        card.style.display=(cat==="todos"||card.dataset.categoria===cat)?"block":"none";
+    });
+}
+
+function pesquisarProduto(){
+    let termo = document.querySelector(".search input").value.toLowerCase();
+    let cards = document.querySelectorAll('.card');
+    cards.forEach(card=>{
+        let nome = card.querySelector("h3").innerText.toLowerCase();
+        card.style.display = nome.includes(termo) ? "block" : "none";
+    });
+}
+
+function ordenarProdutos(tipo){
+    let container = document.querySelector(".container");
+    let cards = Array.from(container.querySelectorAll(".card"));
+
+    cards.sort((a,b)=>{
+        let nomeA = a.querySelector("h3").innerText.toLowerCase();
+        let nomeB = b.querySelector("h3").innerText.toLowerCase();
+        let precoA = parseFloat(a.querySelector(".price").innerText.replace("R$","").replace(",",".").trim());
+        let precoB = parseFloat(b.querySelector(".price").innerText.replace("R$","").replace(",",".").trim());
+
+        if(tipo === "menor") return precoA - precoB;
+        if(tipo === "maior") return precoB - precoA;
+        if(tipo === "az") return nomeA.localeCompare(nomeB);
+        if(tipo === "za") return nomeB.localeCompare(nomeA);
+
+        return 0;
+    });
+
+    cards.forEach(card => container.appendChild(card));
+}
+</script>
+
+</body>
+</html>
