@@ -226,6 +226,14 @@ style="padding:10px 18px;border-radius:12px;border:1px solid #ddd;font-size:14px
 
 <div class="container">
 
+<div class="card" data-categoria="berloques">
+<img src="bre.webp">
+<h3>Berloque Personalizado</h3>
+<p class="status pronta">Sob Encomenda</p>
+<p class="price">R$ 119,90</p>
+<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
+</div>
+    
 <div class="card" data-categoria="colares">
 <img src="col1.webp">
 <h3>Choker Pingentes Lua Vazada e Fechada 40cm</h3>
@@ -721,6 +729,9 @@ function enviarPedido(){
     if(nome === ""){
         alert("Informe seu nome!");
         return;
+    if(telefone === ""){
+        alert("Informe seu telefone!");
+        return;
     }
     let mensagem = `🛍️ PEDIDO - VINHAL PRATAS\n\n`;
     mensagem += `👤 Nome: ${nome}\n\n`;
@@ -773,6 +784,7 @@ function ordenarProdutos(tipo){
 </body>
 
 </html>
+
 
 
 
