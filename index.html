@@ -6,184 +6,224 @@
 <title>Vinhal Pratas</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
 body{
-    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto;
-    background:#f5f5f7;
+font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto;
+background:#f5f5f7;
 }
+
 .top-strip{
-    background:#fff;
-    text-align:center;
-    padding:8px;
-    font-size:13px;
-    border-bottom:1px solid #eee;
+background:#fff;
+text-align:center;
+padding:8px;
+font-size:13px;
+border-bottom:1px solid #eee;
 }
+
 header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px;
-    background:#fff;
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
+padding:15px;
+background:#fff;
 }
+
 .logo{
-    font-size:22px;
-    font-weight:700;
-    letter-spacing:2px;
+font-size:22px;
+font-weight:700;
+letter-spacing:2px;
 }
+
+.contato{
+font-size:13px;
+color:#666;
+margin-top:4px;
+}
+
 .search{
-    padding:0 15px 10px;
-    background:#fff;
+padding:12px;
+background:#fff;
 }
+
 .search input{
-    width:100%;
-    padding:12px;
-    border-radius:12px;
-    border:1px solid #ddd;
-    font-size:14px;
+width:100%;
+padding:12px;
+border-radius:12px;
+border:1px solid #ddd;
+font-size:14px;
 }
+
 .navbar{
-    display:flex;
-    overflow-x:auto;
-    gap:18px;
-    padding:12px 15px;
-    background:#fff;
-    border-bottom:1px solid #eee;
-    align-items:center;
+display:flex;
+overflow-x:auto;
+gap:18px;
+padding:12px 15px;
+background:#fff;
+border-bottom:1px solid #eee;
 }
-.navbar::-webkit-scrollbar{display:none;}
+
+.navbar::-webkit-scrollbar{
+display:none;
+}
+
 .navbar button{
-    background:none;
-    border:none;
-    font-size:14px;
-    white-space:nowrap;
-    cursor:pointer;
+background:none;
+border:none;
+font-size:14px;
+white-space:nowrap;
+cursor:pointer;
 }
-.navbar select{
-    padding:6px 10px;
-    border-radius:10px;
-    border:1px solid #ddd;
-}
+
 .container{
-    padding:20px 10px 100px;
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap:10px;
+padding:18px 12px 100px;
+display:flex;
+flex-direction:column;
+gap:14px;
 }
+
 .card{
-    background:#fff;
-    padding:15px;
-    border-radius:18px;
-    box-shadow:0 8px 25px rgba(0,0,0,0.05);
+background:#fff;
+padding:12px;
+border-radius:16px;
+box-shadow:0 6px 18px rgba(0,0,0,0.05);
+display:flex;
+gap:14px;
+align-items:center;
 }
+
 .card img{
-    width:100%;
-    border-radius:14px;
-    margin-bottom:10px;
+width:90px;
+height:90px;
+object-fit:cover;
+border-radius:12px;
 }
-.card h3{
-    font-size:16px;
-    margin-bottom:6px;
+
+.info{
+flex:1;
 }
+
+.info h3{
+font-size:15px;
+margin-bottom:5px;
+}
+
+.status{
+font-size:12px;
+color:#777;
+margin-bottom:5px;
+}
+
 .price{
-    font-weight:bold;
-    margin-bottom:10px;
+font-weight:bold;
+margin-bottom:8px;
 }
+
 .add-btn{
-    width:100%;
-    padding:12px;
-    background:#000;
-    color:#fff;
-    border:none;
-    border-radius:12px;
-    font-weight:600;
-    cursor:pointer;
+padding:8px 14px;
+background:#000;
+color:#fff;
+border:none;
+border-radius:10px;
+font-size:13px;
+cursor:pointer;
 }
+
 .cart-fixed{
-    position:fixed;
-    bottom:20px;
-    left:50%;
-    transform:translateX(-50%);
-    background:#25D366;
-    color:#fff;
-    padding:14px 28px;
-    border-radius:50px;
-    font-weight:bold;
-    box-shadow:0 10px 25px rgba(0,0,0,0.15);
-    cursor:pointer;
+position:fixed;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+background:#25D366;
+color:#fff;
+padding:14px 28px;
+border-radius:50px;
+font-weight:bold;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+cursor:pointer;
 }
+
 .modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.4);
-    backdrop-filter:blur(5px);
-    justify-content:center;
-    align-items:flex-end;
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(5px);
+justify-content:center;
+align-items:flex-end;
 }
+
 .modal-content{
-    background:#fff;
-    width:100%;
-    max-width:500px;
-    padding:20px;
-    border-radius:25px 25px 0 0;
+background:#fff;
+width:100%;
+max-width:500px;
+padding:20px;
+border-radius:25px 25px 0 0;
 }
+
 .item-carrinho{
-    display:flex;
-    justify-content:space-between;
-    padding:10px 0;
-    border-bottom:1px solid #eee;
-    font-size:14px;
+display:flex;
+justify-content:space-between;
+padding:10px 0;
+border-bottom:1px solid #eee;
+font-size:14px;
 }
-.item-carrinho button{
-    background:none;
-    border:none;
-    color:#c0392b;
-    cursor:pointer;
-}
+
 .total{
-    font-weight:bold;
-    margin:15px 0;
+font-weight:bold;
+margin:15px 0;
 }
+
 .modal-content input,
 .modal-content textarea{
-    width:100%;
-    padding:12px;
-    border-radius:12px;
-    border:1px solid #ddd;
-    margin-bottom:10px;
+width:100%;
+padding:12px;
+border-radius:12px;
+border:1px solid #ddd;
+margin-bottom:10px;
 }
+
 .btn-green{
-    width:100%;
-    padding:14px;
-    border-radius:14px;
-    border:none;
-    background:#25D366;
-    color:#fff;
-    font-weight:bold;
-    cursor:pointer;
+width:100%;
+padding:14px;
+border-radius:14px;
+border:none;
+background:#25D366;
+color:#fff;
+font-weight:bold;
+cursor:pointer;
 }
+
 .btn-gray{
-    width:100%;
-    padding:12px;
-    border-radius:12px;
-    border:none;
-    background:#eee;
-    margin-top:8px;
-    cursor:pointer;
+width:100%;
+padding:12px;
+border-radius:12px;
+border:none;
+background:#eee;
+margin-top:8px;
+cursor:pointer;
 }
+
 </style>
 </head>
 
 <body>
 
 <div class="top-strip">
-PRATA 925 AUTÊNTICA ✨ | ENVIOS PARA TODO BRASIL 
+PRATA 925 AUTÊNTICA ✨ | ENVIOS PARA TODO BRASIL
 </div>
 
-<header style="flex-direction:column;align-items:center;text-align:center;">
+<header>
+
 <div class="logo">VINHAL PRATAS</div>
 
-<div style="font-size:13px;color:#666;margin-top:4px;">
+<div class="contato">
 📞 (62) 99473-6469 | 📞 (62) 92000-8312 <br>
 ✉️ vinhalpratass925@gmail.com
 </div>
@@ -196,785 +236,46 @@ PRATA 925 AUTÊNTICA ✨ | ENVIOS PARA TODO BRASIL
 
 <div class="navbar">
 <button onclick="filtrarCategoria('todos')">Todos</button>
+<button onclick="filtrarCategoria('aneis')">Anéis</button>
 <button onclick="filtrarCategoria('brincos')">Brincos</button>
-<button onclick="filtrarCategoria('anéis')">Anéis</button>
-<button onclick="filtrarCategoria('alianças')">Alianças</button>
 <button onclick="filtrarCategoria('colares')">Colares</button>
-<button onclick="filtrarCategoria('argola')">Argolas</button>
-<button onclick="filtrarCategoria('pulseiras')">Pulseiras</button>
-<button onclick="filtrarCategoria('tornozeleiras')">Tornozeleiras</button>
-<button onclick="filtrarCategoria('pingentes')">Pingentes</button>
-<button onclick="filtrarCategoria('berloques')">Berloques</button>
-<button onclick="filtrarCategoria('conjuntos')">Conjuntos</button>
-<button onclick="filtrarCategoria('alianças')">Alianças</button>
-<button onclick="filtrarCategoria('pulseiras masculinas')">Pulseiras Masculinas</button>
-<button onclick="filtrarCategoria('correntes masculinas')">Correntes Masculinas</button>
-<button onclick="filtrarCategoria('brincos masculinos')">Brincos Masculinos</button>
-<button onclick="filtrarCategoria('lançamentos')">Lançamentos</button>
-<button onclick="filtrarCategoria('outlet')">Outlet</button>
-<button onclick="filtrarCategoria('utensílios')">Utensílios</button>
-
-
-</div>
-
-<div style="background:#fff;padding:15px;text-align:center;border-bottom:1px solid #eee;">
-<select onchange="ordenarProdutos(this.value)" 
-style="padding:10px 18px;border-radius:12px;border:1px solid #ddd;font-size:14px;">
-    <option value="">Ordenar por</option>
-    <option value="menor">Menor preço</option>
-    <option value="maior">Maior preço</option>
-    <option value="az">Nome A–Z</option>
-    <option value="za">Nome Z–A</option>
-</select>
+<button onclick="filtrarCategoria('aliancas')">Alianças</button>
 </div>
 
 <div class="container">
 
-<div class="card" data-categoria="berloques">
-<img src="bre.webp">
-<h3>Berloque Personalizado</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 119,90</p>
+<div class="card" data-categoria="aneis">
+<img src="qp.webp">
+<div class="info">
+<h3>Anel de Prata 925 Infinito Vazado</h3>
+<p class="status">Sob Encomenda</p>
+<p class="price">R$ 69,90</p>
 <button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
 </div>
 
-<div class="card" data-categoria="alianças">
+</div>
+
+<div class="card" data-categoria="aliancas">
 <img src="yp.jpeg">
-<h3>Par de Alianças de Namoro em Prata 925 com 2mm</h3>
-<p class="status pronta">Sob Encomenda</p>
+<div class="info">
+<h3>Par de Alianças de Namoro Prata 925</h3>
+<p class="status">Sob Encomenda</p>
 <p class="price">R$ 170,00</p>
 <button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
 </div>
 
-<div class="card" data-categoria="alianças">
-<img src="yp1.jpeg">
-<h3>Aliança de Compromisso em Prata 925 Abaulada 2mm</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 180,00</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="alianças">
-<img src="yp2.jpeg">
-<h3>Par de Alianças de Namoro Prata 925 Com Laterais Diamantadas</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 270,00</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="alianças">
-<img src="yp2.jpeg">
-<h3>Par de Alianças de Namoro Prata 925 Com Laterais Diamantadas</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 270,00</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="alianças">
-<img src="yp3.jpeg">
-<h3>Par de Alianças de Compromisso em Prata 925 Detalhada 3mm</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 280,00</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="alianças">
-<img src="yp5.jpeg">
-<h3>Par de Alianças de Namoro em Prata 925 Quadrada com Friso e Zircônia</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 220,00</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="alianças">
-<img src="yp6.jpeg">
-<h3>Aliança de Namoro Quadrada em Prata 925 4mm</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 160,00</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="alianças">
-<img src="yp7.jpeg">
-<h3>Par de Alianças de Namoro em Prata 925 Diamantado no meio 3mm e Zircônia</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 190,00</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-    
-<div class="card" data-categoria="anéis">
-<img src="qp.webp">
-<h3>Anel de Prata 925 Infinito Vazado</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 69,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="anéis">
-<img src="sal.webp">
-<h3>Anel Solitário Aro Fino Ponto de Luz Alto Rosa Claro N-19</h3>
-<p class="status pronta">Pronto Entrega</p>
-<p class="price">R$ 39,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="anéis">
-<img src="sal1.webp">
-<h3>Anel Solitário Tradicional Fino Verde N-16</h3>
-<p class="status pronta">Pronto Entrega</p>
-<p class="price">R$ 39,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="anéis">
-<img src="sal2.webp">
-<h3>Anel Regulável Coração com Ponto de Luz Prata 925</h3>
-<p class="status pronta">Pronto Entrega</p>
-<p class="price">R$ 39,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="anéis">
-<img src="qp1.webp">
-<h3>Anel Meia Aliança de Prata 925 Aparador 2 Fileiras Cravejadas</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 79,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="anéis">
-<img src="qp2.webp">
-<h3>Anel Regulável de Prata 925 Ponto de luz</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 54,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="anéis">
-<img src="qp3.webp">
-<h3>Anel de Prata 925 Cruz com Zircônias Cravejadas</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 74,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="anéis">
-<img src="qp4.webp">
-<h3>Anel de Prata 925 Coração Cravejado e Trevo da Sorte Vazado</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 74,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="anéis">
-<img src="qp5.webp">
-<h3>Anel de Prata 925 Coração Cravejado e Trevo da Sorte Vazado</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 79,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="anéis">
-<img src="qp6.webp">
-<h3>Anel de Prata 925 Corações Lisos e com Zircônias</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 74,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="utensílios">
-<img src="pa1.webp">
-<h3>Par de Tarraxas de Brinco Prata 925</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 9,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="pingentes">
-<img src="pa2.webp">
-<h3>Pingente Cruz Mini Prata 925</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 9,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="pingentes">
-<img src="pa3.webp">
-<h3>Pingente Gota Azul Ponto de Luz Zircônia Prata 925</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 14,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="pingentes">
-<img src="pa4.webp">
-<h3>Pingente Folha Vazada Prata 925</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 14,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="pingentes">
-<img src="pa5.webp">
-<h3>Pingente Calda de Sereia Liso P Prata 925</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 14,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="pingentes">
-<img src="pa6.webp">
-<h3>Pingente Figa Prata 925</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 19,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="pingentes">
-<img src="pa7.webp">
-<h3>Pingente Concha P Prata 925</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 19,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="pingentes">
-<img src="pa8.webp">
-<h3>Pingente Espírito Santo N2 P</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 19,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="pingentes">
-<img src="pa9.webp">
-<h3>Pingente Nossa Senhora c/ círculo Prata 925</h3>
-<p class="status pronta">Pronto Entrega</p>
-<p class="price">R$ 22,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="pingentes">
-<img src="pa10.webp">
-<h3>Pingente Menino e Menina N2 Prata 925</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 19,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="colares">
-<img src="pa11.webp">
-<h3>Colar Choker Borboleta Geométrica com Zircônia 45cm Prata 925</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 89,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="colares">
-<img src="pa12.webp">
-<h3>Choker Coração Rosa Fixo Prata 925</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 79,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="colares">
-<img src="pa13.webp">
-<h3>Choker Árvore da Vida Prata 925</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 79,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="colares">
-<img src="pa14.webp">
-<h3>Conjunto ICE Raio Cravejado Prata 925 45cm</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 79,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="colares">
-<img src="pa14.webp">
-<h3>Conjunto ICE Raio Cravejado Prata 925 50cm</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 82,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="colares">
-<img src="pa14.webp">
-<h3>Conjunto ICE Raio Cravejado Prata 925 60cm</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 89,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="anéis">
-<img src="pa15.webp">
-<h3>Anel Elo Português Regulável Prata 925</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 59,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="colares">
-<img src="pa14.webp">
-<h3>Conjunto ICE Raio Cravejado Prata 925 70cm</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 99,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="anéis">
-<img src="pa16.webp">
-<h3>Anel Regulável Ponto de Luz Oval Prata 925</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 59,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-    
-<div class="card" data-categoria="colares">
-<img src="col1.webp">
-<h3>Choker Pingentes Lua Vazada e Fechada 40cm</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 59,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-    
-<div class="card" data-categoria="anéis">
-<img src="az.webp">
-<h3>Anel Solitário de Prata 925 Ponto de luz Redondo com Zirônias Cravejadas</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 79,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="anéis">
-<img src="az1.webp">
-<h3>Anel de Prata 925 Cruz com Zircônias Cravejadas</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 79,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-    
-<div class="card" data-categoria="colares">
-<img src="col2.webp">
-<h3>Choker Pingentes Raio 40cm</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 59,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="colares">
-<img src="col3.webp">
-<h3>Choker Pingentes Estrela com Pontos de Luz Coloridos 40cm</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 59,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="colares">
-<img src="col4.webp">
-<h3>Choker Pingentes Coração Pontos de Luz Coloridos 40cm</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 59,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="colares">
-<img src="col5.jpg">
-<h3>Corrente Pipoca Aberta M 45cm</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 79,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="colares">
-<img src="col6.jpg">
-<h3>Corrente Veneziana Bola P 1mm 40cm</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 59,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="colares">
-<img src="col7.webp">
-<h3>Corrente Rabo de Rato P 50 cm</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 79,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="colares">
-<img src="col8.webp">
-<h3>Corrente Trançada 2 Fios 40cm</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 129,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="colares">
-<img src="col8.webp">
-<h3>Corrente Trançada 2 Fios 45cm</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 139,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-    
-<div class="card" data-categoria="argola">
-<img src="a.png">
-<h3>Argola Redonda P</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 14,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="brincos">
-<img src="kitverd.webp">
-<h3>Trio Redondo Verde Agua</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 44,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="brincos">
-<img src="ac1.webp">
-<h3>Brinco Nossa Senhora Aparecida - 6mm x 10mm </h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 44,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
 </div>
 
 <div class="card" data-categoria="brincos">
 <img src="ac2.webp">
-<h3>Brinco pequeno zircônia coração 3mm</h3>
-<p class="status pronta">Sob Encomenda</p>
+<div class="info">
+<h3>Brinco pequeno zircônia coração</h3>
+<p class="status">Sob Encomenda</p>
 <p class="price">R$ 19,90</p>
 <button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
 </div>
 
-<div class="card" data-categoria="brincos">
-<img src="ac3.jpg">
-<h3>Brinco de Prata 925 Patinha de Cachorro Lisa</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 29,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
 </div>
-
-<div class="card" data-categoria="brincos">
-<img src="ac4.webp">
-<h3>Brinco argola de Prata 925 Coração zircônia pendente</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 59,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="brincos">
-<img src="ac5.webp">
-<h3>Trio de Brincos Redondo - Prata 925</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 44,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="brincos">
-<img src="ac6.webp">
-<h3>Trio de brincos coração turmalina verde agua prata 925</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 59,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="brincos">
-<img src="ac7.webp">
-<h3>Brinco de Prata 925 Coração Vazado com Zircônias</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 89,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="brincos">
-<img src="ac8.jpg">
-<h3>Brincos prata 925 Nossa Senhora Aparecida manto azul</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 89,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-    
-<div class="card" data-categoria="brincos">
-<img src="kitazul.webp">
-<h3>Trio Redondo Azul Escuro</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 44,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="pulseiras masculinas">
-<img src="pul1.webp">
-<h3>Pulseira Grumet Simples 4mm</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 129,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="brincos">
-<img src="aar.webp">
-<h3>Brinco Árvore da Vida Círculo Cravejado</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 44,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="tornozeleiras">
-<img src="to1.webp">
-<h3>Tornozeleira 3x1 Peixe</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 44,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="tornozeleiras">
-<img src="to2.webp">
-<h3>Tornozeleira Olho Grego Círculo</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 49,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="tornozeleiras">
-<img src="to3.webp">
-<h3>Tornozeleira Pingente Golfinho</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 59,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="tornozeleiras">
-<img src="to4.webp">
-<h3>Tornozeleira Pingente Tartaruga</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 59,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="tornozeleiras">
-<img src="to5.webp">
-<h3>Tornozeleira Olho Grego Branco</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 59,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="brincos">
-<img src="01.webp">
-<h3>Brinco Oval com Pontas Brilhosas Cravejado</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 69,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="brincos">
-<img src="02.webp">
-<h3>Brinco Folha Ondulada Trabalhada</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 44,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="brincos">
-<img src="03.webp">
-<h3>Brinco Vírgula</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 49,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="pulseiras masculinas">
-<img src="04.webp">
-<h3>Pulseira Gucci 4mm</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 99,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="pulseiras masculinas">
-<img src="06.webp">
-<h3>Pulseira Gucci 6mm</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 119,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="pulseiras masculinas">
-<img src="05.jpg">
-<h3>Pulseira Grumet Simples 3mm</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 89,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="pulseiras masculinas">
-<img src="07.webp">
-<h3>Pulseira Grumet Flat 4mm</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 109,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="pulseiras masculinas">
-<img src="08.webp">
-<h3>Pulseira 3x1 8mm</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 249,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="berloques">
-<img src="bmaca.webp">
-<h3>Berloque Maçã</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 69,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-<div class="card" data-categoria="anéis">
-<img src="co.webp">
-<h3>Anel Coração Chapa</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 44,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="anéis">
-<img src="co1.webp">
-<h3>Anel V Cravejado</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 44,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="anéis">
-<img src="co2.webp">
-<h3>Anel Letras Regulável A ao Z</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 49,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="anéis">
-<img src="co3.jpg">
-<h3>Anel Solitário 8 Garras com Aro Cruzado</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 49,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-    
-<div class="card" data-categoria="berloques">
-<img src="fla.webp">
-<h3>Berloque Time Flamengo</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 69,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="argola">
-<img src="a.png">
-<h3>Argola Redonda M</h3>
-<p class="status pronta">Pronto Entrega</p>
-<p class="price">R$ 14,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="argola">
-<img src="a.png">
-<h3>Argola Redonda G</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 19,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="argola">
-<img src="a.png">
-<h3>Kit Argolas Redonda P M G</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 44,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="argola">
-<img src="arglosa.webp">
-<h3>Kit Argola Losango Fio Redondo P M G</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 44,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-    
-<div class="card" data-categoria="berloques">
-<img src="bsao.webp">
-<h3>Berloque Time São Paulo</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 59,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="berloques">
-<img src="cora.webp">
-<h3>Berloque Coração Vazado Inspiração</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 59,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-    
-<div class="card" data-categoria="argola">
-<img src="arglosa.webp">
-<h3>Argola Losango Fio Redondo P</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 14,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="argola">
-<img src="arglosa.webp">
-<h3>Argola Losango Fio Redondo M</h3>
-<p class="status pronta">Pronto Entrega</p>
-<p class="price">R$ 14,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="argola">
-<img src="arglosa.webp">
-<h3>Argola Losango Fio Redondo G</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 19,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="conjuntos">
-<img src="1.webp">
-<h3>Conjunto Gota Cravejado</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 149,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="conjuntos">
-<img src="5.webp">
-<h3>Conjunto Coração Cravejado</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 149,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
-<div class="card" data-categoria="conjuntos">
-<img src="3.webp">
-<h3>Conjunto Heart Corrente, Pingente e Brinco 6mm</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 119,90</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-
 
 </div>
 
@@ -983,154 +284,155 @@ Carrinho (<span id="qtd">0</span>)
 </div>
 
 <div class="modal" id="modalCarrinho">
+
 <div class="modal-content">
+
 <h3>Seu Pedido</h3>
+
 <div id="listaCarrinho"></div>
+
 <div class="total">
 Total: R$ <span id="valorTotal">0.00</span>
 </div>
+
 <input type="text" id="nomeCliente" placeholder="Seu nome">
+
 <textarea id="obsPedido" placeholder="Observações"></textarea>
+
 <button class="btn-green" onclick="enviarPedido()">Enviar pelo WhatsApp</button>
+
 <button class="btn-gray" onclick="fecharCarrinho()">Fechar</button>
+
 </div>
+
 </div>
 
 <script>
-let carrinho = [];
-let total = 0;
+
+let carrinho=[];
+let total=0;
 
 function addCarrinho(botao){
-    let card = botao.closest(".card");
-    let nome = card.querySelector("h3").innerText;
-    let precoTexto = card.querySelector(".price").innerText;
-    let preco = parseFloat(precoTexto.replace("R$","").replace(",",".").trim());
-    carrinho.push({nome, preco});
-    total += preco;
-    document.getElementById("qtd").innerText = carrinho.length;
+
+let card=botao.closest(".card");
+
+let nome=card.querySelector("h3").innerText;
+
+let precoTexto=card.querySelector(".price").innerText;
+
+let preco=parseFloat(precoTexto.replace("R$","").replace(",","."));
+
+carrinho.push({nome,preco});
+
+total+=preco;
+
+document.getElementById("qtd").innerText=carrinho.length;
+
 }
 
 function abrirCarrinho(){
-    if(carrinho.length === 0){
-        alert("Seu carrinho está vazio!");
-        return;
-    }
-    let lista = document.getElementById("listaCarrinho");
-    lista.innerHTML = "";
-    carrinho.forEach((item,index)=>{
-        lista.innerHTML += `
-        <div class="item-carrinho">
-            <span>${item.nome}</span>
-            <span>
-                R$ ${item.preco.toFixed(2)}
-                <button onclick="removerItem(${index})">✖</button>
-            </span>
-        </div>`;
-    });
-    document.getElementById("valorTotal").innerText = total.toFixed(2);
-    document.getElementById("modalCarrinho").style.display = "flex";
+
+if(carrinho.length===0){
+
+alert("Carrinho vazio");
+
+return;
+
+}
+
+let lista=document.getElementById("listaCarrinho");
+
+lista.innerHTML="";
+
+carrinho.forEach((item,index)=>{
+
+lista.innerHTML+=`
+<div class="item-carrinho">
+<span>${item.nome}</span>
+<span>
+R$ ${item.preco.toFixed(2)}
+<button onclick="removerItem(${index})">✖</button>
+</span>
+</div>
+`;
+
+});
+
+document.getElementById("valorTotal").innerText=total.toFixed(2);
+
+document.getElementById("modalCarrinho").style.display="flex";
+
 }
 
 function fecharCarrinho(){
-    document.getElementById("modalCarrinho").style.display = "none";
+
+document.getElementById("modalCarrinho").style.display="none";
+
 }
 
 function removerItem(index){
-    total -= carrinho[index].preco;
-    carrinho.splice(index,1);
-    document.getElementById("qtd").innerText = carrinho.length;
-    abrirCarrinho();
+
+total-=carrinho[index].preco;
+
+carrinho.splice(index,1);
+
+document.getElementById("qtd").innerText=carrinho.length;
+
+abrirCarrinho();
+
 }
 
 function enviarPedido(){
-    let nome = document.getElementById("nomeCliente").value.trim();
-    if(nome === ""){
-        alert("Informe seu nome!");
-        return;
-    }
-    let mensagem = `🛍️ PEDIDO - VINHAL PRATAS\n\n`;
-    mensagem += `👤 Nome: ${nome}\n\n`;
-    carrinho.forEach(item=>{
-        mensagem += `• ${item.nome} - R$ ${item.preco.toFixed(2)}\n`;
-    });
-    mensagem += `\n💰 Total: R$ ${total.toFixed(2)}\n`;
-    let url = "https://wa.me/5562994736469?text=" + encodeURIComponent(mensagem);
-    window.open(url, "_blank");
+
+let nome=document.getElementById("nomeCliente").value;
+
+let mensagem=`🛍️ PEDIDO - VINHAL PRATAS\n\n`;
+
+mensagem+=`👤 Nome: ${nome}\n\n`;
+
+carrinho.forEach(item=>{
+
+mensagem+=`• ${item.nome} - R$ ${item.preco.toFixed(2)}\n`;
+
+});
+
+mensagem+=`\n💰 Total: R$ ${total.toFixed(2)}`;
+
+let url="https://wa.me/5562994736469?text="+encodeURIComponent(mensagem);
+
+window.open(url,"_blank");
+
 }
 
 function filtrarCategoria(cat){
-    let cards=document.querySelectorAll('.card');
-    cards.forEach(card=>{
-        card.style.display=(cat==="todos"||card.dataset.categoria===cat)?"block":"none";
-    });
+
+let cards=document.querySelectorAll('.card');
+
+cards.forEach(card=>{
+
+card.style.display=(cat==="todos"||card.dataset.categoria===cat)?"flex":"none";
+
+});
+
 }
 
 function pesquisarProduto(){
-    let termo = document.querySelector(".search input").value.toLowerCase();
-    let cards = document.querySelectorAll('.card');
-    cards.forEach(card=>{
-        let nome = card.querySelector("h3").innerText.toLowerCase();
-        card.style.display = nome.includes(termo) ? "block" : "none";
-    });
+
+let termo=document.querySelector(".search input").value.toLowerCase();
+
+let cards=document.querySelectorAll('.card');
+
+cards.forEach(card=>{
+
+let nome=card.querySelector("h3").innerText.toLowerCase();
+
+card.style.display=nome.includes(termo)?"flex":"none";
+
+});
+
 }
 
-function ordenarProdutos(tipo){
-    let container = document.querySelector(".container");
-    let cards = Array.from(container.querySelectorAll(".card"));
-
-    cards.sort((a,b)=>{
-        let nomeA = a.querySelector("h3").innerText.toLowerCase();
-        let nomeB = b.querySelector("h3").innerText.toLowerCase();
-        let precoA = parseFloat(a.querySelector(".price").innerText.replace("R$","").replace(",",".").trim());
-        let precoB = parseFloat(b.querySelector(".price").innerText.replace("R$","").replace(",",".").trim());
-
-        if(tipo === "menor") return precoA - precoB;
-        if(tipo === "maior") return precoB - precoA;
-        if(tipo === "az") return nomeA.localeCompare(nomeB);
-        if(tipo === "za") return nomeB.localeCompare(nomeA);
-
-        return 0;
-    });
-
-    cards.forEach(card => container.appendChild(card));
-}
 </script>
 
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
