@@ -1057,35 +1057,15 @@ function enviarPedido(){
         alert("Informe seu nome!");
         return;
     }
-function enviarPedido(){
-
-let nome = document.getElementById("nomeCliente").value.trim();
-
-if(nome === ""){
-alert("Informe seu nome!");
-return;
+    let mensagem = `🛍️ PEDIDO - VINHAL PRATAS\n\n`;
+    mensagem += `👤 Nome: ${nome}\n\n`;
+    carrinho.forEach(item=>{
+        mensagem += `• ${item.nome} - R$ ${item.preco.toFixed(2)}\n`;
+    });
+    mensagem += `\n💰 Total: R$ ${total.toFixed(2)}\n`;
+    let url = "https://wa.me/5562994736469?text=" + encodeURIComponent(mensagem);
+    window.open(url, "_blank");
 }
-
-let mensagem = "🛍️ PEDIDO - VINHAL PRATAS\n\n";
-
-mensagem += "👤 Nome: " + nome + "\n\n";
-
-mensagem += "📦 Produtos:\n";
-
-carrinho.forEach(item=>{
-    mensagem += "✨ " + item.nome + " - R$ " + item.preco.toFixed(2) + "\n";
-});
-
-mensagem += "\n💰 Total: R$ " + total.toFixed(2) + "\n";
-
-mensagem += "\n📲 Pedido feito pelo site Vinhal Pratas";
-
-let url = "https://wa.me/5562994736469?text=" + encodeURIComponent(mensagem);
-
-window.open(url, "_blank");
-
-}
-
 
 function filtrarCategoria(cat){
     let cards=document.querySelectorAll('.card');
@@ -1128,7 +1108,3 @@ function ordenarProdutos(tipo){
 </body>
 
 </html>
-
-
-
-
