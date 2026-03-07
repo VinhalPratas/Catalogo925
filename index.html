@@ -18,6 +18,8 @@ font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto;
 background:#f5f5f7;
 }
 
+/* topo */
+
 .top-strip{
 background:#fff;
 text-align:center;
@@ -25,6 +27,8 @@ padding:8px;
 font-size:13px;
 border-bottom:1px solid #eee;
 }
+
+/* header */
 
 header{
 display:flex;
@@ -47,6 +51,8 @@ color:#666;
 margin-top:4px;
 }
 
+/* busca */
+
 .search{
 padding:12px;
 background:#fff;
@@ -59,6 +65,8 @@ border-radius:12px;
 border:1px solid #ddd;
 font-size:14px;
 }
+
+/* categorias */
 
 .navbar{
 display:flex;
@@ -80,6 +88,8 @@ font-size:14px;
 white-space:nowrap;
 cursor:pointer;
 }
+
+/* produtos */
 
 .container{
 padding:18px 12px 100px;
@@ -105,35 +115,50 @@ object-fit:cover;
 border-radius:12px;
 }
 
+/* informações */
+
 .info{
 flex:1;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+height:90px;
 }
 
 .info h3{
-font-size:15px;
-margin-bottom:5px;
+font-size:14px;
+line-height:1.2;
+display:-webkit-box;
+-webkit-line-clamp:2;
+-webkit-box-orient:vertical;
+overflow:hidden;
 }
 
 .status{
 font-size:12px;
 color:#777;
-margin-bottom:5px;
 }
 
 .price{
 font-weight:bold;
-margin-bottom:8px;
+font-size:14px;
 }
 
+/* botão */
+
 .add-btn{
-padding:8px 14px;
+margin-top:6px;
+padding:7px 12px;
 background:#000;
 color:#fff;
 border:none;
 border-radius:10px;
-font-size:13px;
+font-size:12px;
 cursor:pointer;
+align-self:flex-start;
 }
+
+/* carrinho */
 
 .cart-fixed{
 position:fixed;
@@ -148,6 +173,8 @@ font-weight:bold;
 box-shadow:0 10px 25px rgba(0,0,0,0.15);
 cursor:pointer;
 }
+
+/* modal */
 
 .modal{
 display:none;
@@ -991,6 +1018,8 @@ PRATA 925 AUTÊNTICA ✨ | ENVIOS PARA TODO BRASIL
 
 </div>
 
+</div>
+
 <div class="cart-fixed" onclick="abrirCarrinho()">
 Carrinho (<span id="qtd">0</span>)
 </div>
@@ -1021,24 +1050,24 @@ Total: R$ <span id="valorTotal">0.00</span>
 
 <script>
 
-let carrinho=[];
-let total=0;
+let carrinho=[]
+let total=0
 
 function addCarrinho(botao){
 
-let card=botao.closest(".card");
+let card=botao.closest(".card")
 
-let nome=card.querySelector("h3").innerText;
+let nome=card.querySelector("h3").innerText
 
-let precoTexto=card.querySelector(".price").innerText;
+let precoTexto=card.querySelector(".price").innerText
 
-let preco=parseFloat(precoTexto.replace("R$","").replace(",","."));
+let preco=parseFloat(precoTexto.replace("R$","").replace(",",".").trim())
 
-carrinho.push({nome,preco});
+carrinho.push({nome,preco})
 
-total+=preco;
+total+=preco
 
-document.getElementById("qtd").innerText=carrinho.length;
+document.getElementById("qtd").innerText=carrinho.length
 
 }
 
@@ -1046,15 +1075,15 @@ function abrirCarrinho(){
 
 if(carrinho.length===0){
 
-alert("Carrinho vazio");
+alert("Seu carrinho está vazio!")
 
-return;
+return
 
 }
 
-let lista=document.getElementById("listaCarrinho");
+let lista=document.getElementById("listaCarrinho")
 
-lista.innerHTML="";
+lista.innerHTML=""
 
 carrinho.forEach((item,index)=>{
 
@@ -1065,82 +1094,89 @@ lista.innerHTML+=`
 R$ ${item.preco.toFixed(2)}
 <button onclick="removerItem(${index})">✖</button>
 </span>
-</div>
-`;
+</div>`
 
-});
+})
 
-document.getElementById("valorTotal").innerText=total.toFixed(2);
+document.getElementById("valorTotal").innerText=total.toFixed(2)
 
-document.getElementById("modalCarrinho").style.display="flex";
+document.getElementById("modalCarrinho").style.display="flex"
 
 }
 
 function fecharCarrinho(){
 
-document.getElementById("modalCarrinho").style.display="none";
+document.getElementById("modalCarrinho").style.display="none"
 
 }
 
 function removerItem(index){
 
-total-=carrinho[index].preco;
+total-=carrinho[index].preco
 
-carrinho.splice(index,1);
+carrinho.splice(index,1)
 
-document.getElementById("qtd").innerText=carrinho.length;
+document.getElementById("qtd").innerText=carrinho.length
 
-abrirCarrinho();
+abrirCarrinho()
 
 }
 
 function enviarPedido(){
 
-let nome=document.getElementById("nomeCliente").value;
+let nome=document.getElementById("nomeCliente").value.trim()
 
-let mensagem=`🛍️ PEDIDO - VINHAL PRATAS\n\n`;
+if(nome===""){
 
-mensagem+=`👤 Nome: ${nome}\n\n`;
+alert("Informe seu nome!")
+
+return
+
+}
+
+let mensagem=`🛍️ PEDIDO - VINHAL PRATAS\n\n`
+
+mensagem+=`👤 Nome: ${nome}\n\n`
 
 carrinho.forEach(item=>{
 
-mensagem+=`• ${item.nome} - R$ ${item.preco.toFixed(2)}\n`;
+mensagem+=`• ${item.nome} - R$ ${item.preco.toFixed(2)}\n`
 
-});
+})
 
-mensagem+=`\n💰 Total: R$ ${total.toFixed(2)}`;
+mensagem+=`\n💰 Total: R$ ${total.toFixed(2)}`
 
-let url="https://wa.me/5562994736469?text="+encodeURIComponent(mensagem);
+let url="https://wa.me/5562994736469?text="+encodeURIComponent(mensagem)
 
-window.open(url,"_blank");
+window.open(url,"_blank")
 
 }
 
 function filtrarCategoria(cat){
 
-let cards=document.querySelectorAll('.card');
+let cards=document.querySelectorAll('.card')
 
 cards.forEach(card=>{
 
-card.style.display=(cat==="todos"||card.dataset.categoria===cat)?"flex":"none";
+card.style.display=(cat==="todos"||card.dataset.categoria===cat)?"flex":"none"
 
-});
+})
 
 }
 
 function pesquisarProduto(){
 
-let termo=document.querySelector(".search input").value.toLowerCase();
+let termo=document.querySelector(".search input").value.toLowerCase()
 
-let cards=document.querySelectorAll('.card');
+let cards=document.querySelectorAll('.card')
 
 cards.forEach(card=>{
 
-let nome=card.querySelector("h3").innerText.toLowerCase();
+let nome=card.querySelector("h3").innerText.toLowerCase()
 
-card.style.display=nome.includes(termo)?"flex":"none";
+card.style.display=nome.includes(termo)?"flex":"none"
 
-});
+})
 
 }
 
@@ -1148,4 +1184,3 @@ card.style.display=nome.includes(termo)?"flex":"none";
 
 </body>
 </html>
-
