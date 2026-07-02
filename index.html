@@ -402,7 +402,7 @@ PRATA 925 AUTÊNTICA ✨ | ENVIOS PARA TODO BRASIL
 let carrinho = [];
 let total = 0;
 
-// Função crucial: Altera o texto do preço na tela quando o usuário muda o tamanho no Select
+// Altera o texto do preço na tela quando o usuário muda o tamanho
 function atualizarPrecoProduto(selectElement) {
     let opcaoSelecionada = selectElement.options[selectElement.selectedIndex];
     let novoPreco = parseFloat(opcaoSelecionada.getAttribute('data-preco'));
@@ -417,12 +417,10 @@ function addCarrinho(botao){
     let nomeBase = card.querySelector("h3").innerText;
     let statusDisponibilidade = card.querySelector(".status").innerText;
     
-    // Captura o tamanho e o preço correto selecionados no select daquele card específico
     let selectTamanho = card.querySelector(".variacao-tamanho select");
     let tamanhoSelecionado = selectTamanho.value;
     let preco = parseFloat(selectTamanho.options[selectTamanho.selectedIndex].getAttribute('data-preco'));
     
-    // Monta o nome final para ir bem detalhado no WhatsApp
     let nomeCompletoProduto = `${nomeBase} (${tamanhoSelecionado}) [${statusDisponibilidade}]`;
 
     carrinho.push({nome: nomeCompletoProduto, preco: preco});
@@ -477,20 +475,21 @@ function enviarPedido(){
         return;
     }
 
-    let mensagem = "✨ *NOVO PEDIDO - VINHAL PRATAS* ✨\n\n";
-    mensagem += "👤 *Cliente:* " + nome + "\n";
+    // Removidos os emojis que geravam o erro "" e mantido o padrão limpo do WhatsApp
+    let mensagem = "*NOVO PEDIDO - VINHAL PRATAS*\n\n";
+    mensagem += "*Cliente:* " + nome + "\n";
     mensagem += "----------------------------------------\n";
-    mensagem += "🛍️ *Produtos:*\n";
+    mensagem += "*Produtos:*\n";
 
     carrinho.forEach(item=>{
-        mensagem += `• ${item.nome} - R$ ${item.preco.toFixed(2).replace('.', ',')}\n`;
+        mensagem += "- " + item.nome + " - R$ " + item.preco.toFixed(2).replace('.', ',') + "\n";
     });
 
     mensagem += "----------------------------------------\n";
-    mensagem += "💰 *Total:* R$ " + total.toFixed(2).replace('.', ',') + "\n";
+    mensagem += "*Total:* R$ " + total.toFixed(2).replace('.', ',') + "\n";
 
     if(obs !== ""){
-        mensagem += "\n📝 *Observações:* " + obs + "\n";
+        mensagem += "\n*Observações:* " + obs + "\n";
     }
 
     let url = "https://wa.me/5562994736469?text=" + encodeURIComponent(mensagem);
@@ -501,7 +500,6 @@ function filtrarCategoria(cat){
     let cards = document.querySelectorAll('.card');
     cards.forEach(card=>{
         let categoriasDoCard = card.dataset.categoria.toLowerCase();
-        // Permite filtrar tanto pela categoria (ex: brincos) quanto pelo status (ex: pronto entrega)
         if(cat === "todos" || categoriasDoCard.includes(cat.toLowerCase())){
             card.style.display = "flex";
         } else {
@@ -527,7 +525,6 @@ function ordenarProdutos(tipo){
         let nomeA = a.querySelector("h3").innerText.toLowerCase();
         let nomeB = b.querySelector("h3").innerText.toLowerCase();
         
-        // Pega o valor atual selecionado no select para ordenação correta por preço
         let selectA = a.querySelector(".variacao-tamanho select");
         let selectB = b.querySelector(".variacao-tamanho select");
         let precoA = parseFloat(selectA.options[selectA.selectedIndex].getAttribute('data-preco'));
