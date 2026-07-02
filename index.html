@@ -235,21 +235,21 @@ style="padding:10px 18px;border-radius:12px;border:1px solid #ddd;font-size:14px
 
 <div class="card" data-categoria="brincos">
 <img src="00001.webp">
-<h3>Kit Argola Redonda P M G</h3>
-<p class="status pronta">Sob Encomenda</p>
+<h3>Kit Argola Redonda</h3>
+
+<select class="variacao" onchange="atualizarVariacao(this)">
+<option value="P|30|Sob Encomenda">P</option>
+<option value="M|35|Pronta Entrega">M</option>
+<option value="G|40|Pronta Entrega">G</option>
+</select>
+
+<p class="status">Sob Encomenda</p>
 <p class="price">R$ 30,00</p>
-<button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
-</div>
-    
-<div class="card" data-categoria="brincos">
-<img src="00001.webp">
-<h3>Kit Argola Redonda P M G</h3>
-<p class="status pronta">Sob Encomenda</p>
-<p class="price">R$ 30,00</p>
+
 <button class="add-btn" onclick="addCarrinho(this)">Adicionar</button>
 </div>
 
-</div>
+
 
 <div class="cart-fixed" onclick="abrirCarrinho()">
 Carrinho (<span id="qtd">0</span>)
@@ -274,13 +274,28 @@ let carrinho = [];
 let total = 0;
 
 function addCarrinho(botao){
+
     let card = botao.closest(".card");
+
     let nome = card.querySelector("h3").innerText;
-    let precoTexto = card.querySelector(".price").innerText;
-    let preco = parseFloat(precoTexto.replace("R$","").replace(",",".").trim());
-    carrinho.push({nome, preco});
+
+    let dados = card.querySelector(".variacao").value.split("|");
+
+    let tamanho = dados[0];
+    let preco = parseFloat(dados[1]);
+    let status = dados[2];
+
+    carrinho.push({
+        nome,
+        tamanho,
+        status,
+        preco
+    });
+
     total += preco;
+
     document.getElementById("qtd").innerText = carrinho.length;
+
 }
 
 function abrirCarrinho(){
@@ -293,7 +308,9 @@ function abrirCarrinho(){
     carrinho.forEach((item,index)=>{
         lista.innerHTML += `
         <div class="item-carrinho">
-            <span>${item.nome}</span>
+          <span>${item.nome}<br>
+Tamanho: ${item.tamanho}<br>
+${item.status}</span>
             <span>
                 R$ ${item.preco.toFixed(2)}
                 <button onclick="removerItem(${index})">✖</button>
@@ -331,9 +348,14 @@ function enviarPedido(){
 
     mensagem += "Produtos:\n";
 
-    carrinho.forEach(item=>{
-        mensagem += "" + item.nome + " - R$ " + item.preco.toFixed(2) + "\n";
-    });
+   carrinho.forEach(item=>{
+    mensagem += `${item.nome}
+Tamanho: ${item.tamanho}
+Status: ${item.status}
+Preço: R$ ${item.preco.toFixed(2)}
+
+`;
+});
 
     mensagem += "\n Total: R$ " + total.toFixed(2) + "\n";
 
@@ -344,6 +366,17 @@ function enviarPedido(){
     let url = "https://wa.me/5562994736469?text=" + encodeURIComponent(mensagem);
 
     window.open(url, "_blank");
+}
+
+function atualizarVariacao(select){
+
+    let card = select.closest(".card");
+
+    let dados = select.value.split("|");
+
+    card.querySelector(".price").innerHTML = "R$ " + dados[1] + ",00";
+    card.querySelector(".status").innerHTML = dados[2];
+
 }
 
 function filtrarCategoria(cat){
@@ -360,6 +393,7 @@ function pesquisarProduto(){
         let nome = card.querySelector("h3").innerText.toLowerCase();
         card.style.display = nome.includes(termo) ? "block" : "none";
     });
+    
 }
 
 function ordenarProdutos(tipo){
